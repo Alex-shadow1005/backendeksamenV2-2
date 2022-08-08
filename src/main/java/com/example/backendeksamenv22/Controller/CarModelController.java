@@ -1,5 +1,7 @@
 package com.example.backendeksamenv22.Controller;
 
+import com.example.backendeksamenv22.Domain.Model.CarModelModel;
+import com.example.backendeksamenv22.Domain.Service.CarModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +13,19 @@ import java.util.Optional;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/model")
-public class carModelController {
+public class CarModelController {
 
 
-        private final carModelService carModelService;
+        private final CarModelService carModelService;
 
         @Autowired //dependency injektion
-        public carModelController(carModelService carModelService) {
+        public CarModelController(CarModelService carModelService) {
             this.carModelService = carModelService;
         }
 
         @GetMapping()
-        public ResponseEntity<List<carModelModel>> readcarModelList() {
-            List<carModelModel> carModellist = carModelService.readcarModelList();
+        public ResponseEntity<List<CarModelModel>> readcarModelList() {
+            List<CarModelModel> carModellist = carModelService.readList();
             return new ResponseEntity<>(carModellist, HttpStatus.OK);
         }
    /* @GetMapping("/{hold")
@@ -47,26 +49,26 @@ public class carModelController {
 
 
         @GetMapping("/{id}")
-        public carModelModel readcarModel(@PathVariable Long id) {
-            Optional<carModelModel> readcarModel = carModelService.readcarModel(id);
+        public CarModelModel readcarModel(@PathVariable Long id) {
+            Optional<CarModelModel> readcarModel = carModelService.readone(id);
             return readcarModel.orElse(null);
         }
 
 
         @PostMapping
-        public ResponseEntity<carModelController> addcarModel(@RequestBody carModelModel model){
+        public ResponseEntity<CarModelController> addcarModel(@RequestBody CarModelModel model){
             carModelService.create(model);
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
         @PutMapping("/{id}")
-        public ResponseEntity<carModelModel> updatecarModel(@PathVariable Long id, @RequestBody carModelModel model){
+        public ResponseEntity<CarModelModel> updatecarModel(@PathVariable Long id, @RequestBody CarModelModel model){
             model.setId(id);
             return new ResponseEntity<>(carModelService.update(model),HttpStatus.OK);
         }
 
         @DeleteMapping("/{id}")
-        public ResponseEntity<carModelModel> deletecarModel(@PathVariable Long id){
+        public ResponseEntity<CarModelModel> deletecarModel(@PathVariable Long id){
             carModelService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }

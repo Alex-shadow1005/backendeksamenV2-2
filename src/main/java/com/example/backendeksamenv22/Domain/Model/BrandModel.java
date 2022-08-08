@@ -3,28 +3,20 @@ package com.example.backendeksamenv22.Domain.Model;
 import javax.persistence.*;
 
 @Entity
-public class brandModel {
+public class BrandModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "brand_id")
     private Long id;
+    @Column(name = "brandname")
     private String brandname;
     private String nationality;
 
 
 
 
-    public brandModel() {
-    }
 
-
-
-    public brandModel(Long id, String brandname, String nationality) {
-        this.id = id;
-        this.brandname = brandname;
-        this.nationality = nationality;
-    }
 
 
 
@@ -37,11 +29,11 @@ public class brandModel {
         this.id = id;
     }
 
-    public String getHoldnavn() {
+    public String getBrandname() {
         return brandname;
     }
 
-    public void setHoldnavn(String brandname) {
+    public void setBrandname(String brandname) {
         this.brandname = brandname;
     }
 

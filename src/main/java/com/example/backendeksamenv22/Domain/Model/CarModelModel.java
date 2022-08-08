@@ -3,7 +3,7 @@ package com.example.backendeksamenv22.Domain.Model;
 import javax.persistence.*;
 
 @Entity
-public class carModelModel {
+public class CarModelModel {
 
 
     @Id
@@ -14,13 +14,15 @@ public class carModelModel {
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    private brandModel brandname;
+    private BrandModel brand;
 
     private String modelname;
     private String acceleration;
     private int topspeed;
     private String effectsee;
     private double milesPrLiter;
+
+
 
 
     public Long getId() {
@@ -31,12 +33,12 @@ public class carModelModel {
         this.id = id;
     }
 
-    public brandModel getBrandname() {
-        return brandname;
+    public BrandModel getBrand() {
+        return brand;
     }
 
-    public void setBrandname(brandModel brandname) {
-        this.brandname = brandname;
+    public void setBrand(BrandModel brand) {
+        this.brand = brand;
     }
 
     public String getModelname() {
