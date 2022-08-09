@@ -1,6 +1,6 @@
 package com.example.backendeksamenv22.Domain.Service;
 
-import com.example.backendeksamenv22.Domain.Model.CarModelModel;
+import com.example.backendeksamenv22.Domain.Model.Car;
 import com.example.backendeksamenv22.Repo.CarModelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class CarModelService {
     }
 
     //read all
-    public List<CarModelModel> readList(){
+    public List<Car> readList(){
         return carModelRepo.findAll();
     }
 
@@ -30,15 +30,20 @@ public class CarModelService {
 
      */
     //read one ById
-    public Optional<CarModelModel> readone(Long id){
+    public Optional<Car> readone(Long id){
         return carModelRepo.findById(id);
     }
+
+    public List<Car> findByEffectsee(){
+        return carModelRepo.findAllByOrderByEffectseeAsc();
+    }
+
     //create
-    public void create(CarModelModel model){
+    public void create(Car model){
         carModelRepo.save(model);
     }
     //update
-    public CarModelModel update(CarModelModel model){
+    public Car update(Car model){
 
         return carModelRepo.save(model);
     }
@@ -48,6 +53,9 @@ public class CarModelService {
     }
 
 
+    public List<Car> getCarsByBrandId(Long id) {
+        return carModelRepo.getCarsByBrandId(id);
+    }
 }
 
 

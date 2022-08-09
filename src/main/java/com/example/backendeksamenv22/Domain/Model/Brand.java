@@ -1,14 +1,22 @@
 package com.example.backendeksamenv22.Domain.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class BrandModel {
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "brand_id")
+    @Column(name = "brandModel_id")
     private Long id;
+
+
+    @OneToMany(mappedBy = "brand" , cascade = CascadeType.ALL)
+    private List<Car> cars;
+
+
+
     @Column(name = "brandname")
     private String brandname;
     private String nationality;

@@ -1,7 +1,14 @@
 package com.example.backendeksamenv22.Repo;
 
-import com.example.backendeksamenv22.Domain.Model.CarModelModel;
+import com.example.backendeksamenv22.Domain.Model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CarModelRepo extends JpaRepository<CarModelModel,Long> {
+import java.util.List;
+
+
+public interface CarModelRepo extends JpaRepository<Car,Long> {
+    List<Car> findAllByOrderByEffectseeAsc();
+
+    List<Car> getCarsByBrandId(Long id);
 }
+

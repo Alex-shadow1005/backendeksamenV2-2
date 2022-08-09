@@ -3,25 +3,24 @@ package com.example.backendeksamenv22.Domain.Model;
 import javax.persistence.*;
 
 @Entity
-public class CarModelModel {
+public class Car {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "carModel_id")
+    @Column(name = "id")
     private Long id;
 
 
     @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private BrandModel brand;
+    @JoinColumn(name = "brandModel_id")
+    private Brand brand;
 
     private String modelname;
     private String acceleration;
     private int topspeed;
     private String effectsee;
     private double milesPrLiter;
-
 
 
 
@@ -33,11 +32,11 @@ public class CarModelModel {
         this.id = id;
     }
 
-    public BrandModel getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(BrandModel brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
