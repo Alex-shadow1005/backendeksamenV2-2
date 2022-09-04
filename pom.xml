@@ -14,7 +14,7 @@
 	<name>backendeksamenV2-2</name>
 	<description>backendeksamenV2-2</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

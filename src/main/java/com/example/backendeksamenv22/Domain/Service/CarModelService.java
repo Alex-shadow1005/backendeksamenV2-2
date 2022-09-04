@@ -56,6 +56,15 @@ public class CarModelService {
     public List<Car> getCarsByBrandId(Long id) {
         return carModelRepo.getCarsByBrandId(id);
     }
+    public double getAverageFuelUse(Long id){
+        List<Car> fuelList = carModelRepo.getCarsByBrandId(id);
+        double counter = 0;
+        for (Car car:fuelList) {
+            counter += car.getMilesPrLiter();
+
+        }
+        return counter / fuelList.size();
+    }
 }
 
 

@@ -50,6 +50,13 @@ public class CarModelController {
         }
 
 
+        @GetMapping("/average/{id}")
+        public ResponseEntity<Double> getAverageFuelUse(@PathVariable Long id){
+            Double averageFuel = carModelService.getAverageFuelUse(id);
+            return new ResponseEntity<>(averageFuel, HttpStatus.OK);
+        }
+
+
         @PostMapping
         public ResponseEntity<CarModelController> addcarModel(@RequestBody Car model){
             carModelService.create(model);
@@ -64,8 +71,10 @@ public class CarModelController {
 
         @DeleteMapping("/{id}")
         public ResponseEntity<Car> deletecarModel(@PathVariable Long id){
-            carModelService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+                carModelService.delete(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+
+
         }
 
     }
